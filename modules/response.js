@@ -8,7 +8,16 @@
  */
 module.exports.http = (statusCode, body) => {
   const returnData = {
-    statusCode: statusCode
+    statusCode: statusCode,
+    headers: {
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
+    }
   }
 
   if (body) {
@@ -27,7 +36,14 @@ module.exports.redirect = async (redirectPath, headers) => {
   const returnData = {
     statusCode: 301,
     headers: {
-      Location: redirectPath
+      Location: redirectPath,
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     }
   }
 

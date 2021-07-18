@@ -22,7 +22,14 @@ _.templateSettings.interpolate = /{{([\s\S]+?)}}/g
 module.exports = async (view, variables = {}, headers = {}) => {
   const returnData = {
     headers: {
-      'Content-Type': 'text/html'
+      'Content-Type': 'text/html',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     },
     statusCode: 200
   }

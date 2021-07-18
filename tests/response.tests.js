@@ -8,7 +8,16 @@ test('Test generate return data with 200 htttp code.', t => {
   const response = http(200)
 
   const expected = {
-    statusCode: 200
+    statusCode: 200,
+    headers: {
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
+    }
   }
 
   t.deepEquals(response, expected, 'Renders the correct information.')
@@ -24,6 +33,15 @@ test('Test generate return data with 200 htttp code and body', t => {
 
   const expected = {
     statusCode: 200,
+    headers: {
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
+    },
     body: '{"success":"Hello"}'
   }
 
@@ -37,7 +55,16 @@ test('Test generating a redirect response.', async t => {
 
   const expected = {
     statusCode: 301,
-    headers: { Location: './mypage' }
+    headers: {
+      Location: './mypage',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
+    }
   }
 
   t.deepEquals(response, expected, 'Renders the correct information.')
@@ -55,7 +82,14 @@ test('Test generating a redirect response with custom headers.', async t => {
     statusCode: 301,
     headers: {
       Location: './mypage',
-      'Set-Cookie': 'mycookie=123'
+      'Set-Cookie': 'mycookie=123',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     }
   }
 

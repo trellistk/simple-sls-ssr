@@ -9,7 +9,14 @@ test('Test render of basic page', async t => {
 
   const expected = {
     headers: {
-      'Content-Type': 'text/html'
+      'Content-Type': 'text/html',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     },
     statusCode: 200,
     body: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>'
@@ -26,7 +33,14 @@ test('Test render of a page with variables', async t => {
 
   const expected = {
     headers: {
-      'Content-Type': 'text/html'
+      'Content-Type': 'text/html',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     },
     statusCode: 200,
     body: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  <h1>Hi Jane</h1>\n</body>\n</html>'
@@ -44,7 +58,14 @@ test('Test render of a page with variables', async t => {
   const expected = {
     headers: {
       'Content-Type': 'text/html',
-      'Set-Cookie': 'mycookie=123'
+      'Set-Cookie': 'mycookie=123',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
     },
     statusCode: 200,
     body: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>'

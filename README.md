@@ -7,6 +7,9 @@ A simple helper package to turn Serverless Framework into a Server Side Renderin
 ### Setup
 - Create a folder in your root named ``/templates``.
 - Create your html files to use as templates in the ``/templates`` folder.
+- Create a folder in your root named ``/styles`.
+- Create your css files in the ``/styles`` folder.
+- Name your css files the same as your html files (file extension will be different of course)
 
 ### Serving a page
 ```javascript
@@ -56,6 +59,18 @@ module.exports.myfunction = async (event, context) => {
   }
 
   return await render('hello', null, headers)
+}
+```
+
+### Setting Custom Style Sheet
+The render function will look for the css file in the `styles` folder that is named the same as the view.
+```javascript
+module.exports.myfunction = async (event, context) => {
+  const headers = {
+    'Content-Type': 'application/json'
+  }
+
+  return await render('hello', null, headers, true)
 }
 ```
 

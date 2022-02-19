@@ -19,7 +19,7 @@ _.templateSettings.interpolate = /{{([\s\S]+?)}}/g
  * @returns {object} Http return information with
  * template rendered for display.
  */
-module.exports = async (view, variables = {}, headers = {}) => {
+module.exports = async (view, variables = {}, headers = {}, hasStylesheet = false) => {
   const returnData = {
     headers: {
       'Content-Type': 'text/html',
@@ -42,6 +42,18 @@ module.exports = async (view, variables = {}, headers = {}) => {
   if (variables) {
     for (const [key, value] of Object.entries(variables)) {
       templateVariables[key] = validator.escape(value.toString())
+    }
+  }
+
+  if (hasStylesheet) {
+    try {
+      const file = await fs.readFileSync(path.resolve(
+        'styles',
+        `${view}.css`
+      ), 'utf-8')
+      templateVariables.styles = file
+    } catch (error) {
+      templateVariables.styles = ''
     }
   }
 

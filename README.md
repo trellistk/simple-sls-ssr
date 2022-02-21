@@ -7,7 +7,7 @@ A simple helper package to turn Serverless Framework into a Server Side Renderin
 ### Setup
 - Create a folder in your root named ``/templates``.
 - Create your html files to use as templates in the ``/templates`` folder.
-- Create a folder in your root named ``/styles`.
+- Create a folder in your root named ``/styles``.
 - Create your css files in the ``/styles`` folder.
 - Name your css files the same as your html files (file extension will be different of course)
 

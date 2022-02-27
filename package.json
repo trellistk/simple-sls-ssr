@@ -25,10 +25,10 @@
   "homepage": "https://github.com/trellistk/simple-sls-ssr#readme",
   "dependencies": {
     "lodash": "^4.17.21",
-    "validator": "^13.6.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
-    "standard": "^16.0.3",
-    "tape": "^5.2.2"
+    "standard": "^16.0.4",
+    "tape": "^5.5.2"
   }
 }

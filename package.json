@@ -1,6 +1,6 @@
 {
   "name": "simple-sls-ssr",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A lightweight, simple package for turning Serverless Framework into a server side rendering application.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nourimeals/simple-sls-ssr.git"
+    "url": "git+https://github.com/trellistk/simple-sls-ssr.git"
   },
   "keywords": [
     "serverless",

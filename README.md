@@ -90,6 +90,7 @@ const { response } = require('simple-sls-ssr')
 
 module.exports.myfunction = async (event, context) => {
   const body = { success: "hello world!" }
-  return response.http(200, body)
+  const customHeaders = { "myCookie" : "Cookie123"}
+  return response.http(200, body, customHeaders)
 }
 ```

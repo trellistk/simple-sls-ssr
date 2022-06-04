@@ -2,11 +2,12 @@
 
 /**
  * @description Formats the http response for the http functions.
- * @param {integer} statusCode
- * @param {object} body
+ * @param {integer} statusCode Number representing http status code.
+ * @param {object} body Body json data.
+ * @param {object} headers Custom html headers you want to add.
  * @returns {object} Http return data.
  */
-module.exports.http = (statusCode, body) => {
+module.exports.http = (statusCode, body, headers = {}) => {
   const returnData = {
     statusCode: statusCode,
     headers: {
@@ -18,6 +19,10 @@ module.exports.http = (statusCode, body) => {
       'Cache-Control': 'no-store',
       'Clear-Site-Data': '*'
     }
+  }
+
+  if (Object.keys(headers).length) {
+    returnData.headers = { ...returnData.headers, ...headers }
   }
 
   if (body) {

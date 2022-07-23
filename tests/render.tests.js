@@ -136,3 +136,26 @@ test('Should not render css when style file is not found', async t => {
 
   t.end()
 })
+
+test('Should render with JavaScript', async t => {
+  const response = await render('render-js', null, {}, false, true)
+
+  const expected = {
+    headers: {
+      'Content-Type': 'text/html',
+      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+      'Content-Security-Policy': 'default-src "self"',
+      'X-Frame-Options': 'deny',
+      'X-Content-Type-Options': 'nosniff',
+      'Referrer-Policy': 'origin-when-cross-origin',
+      'Cache-Control': 'no-store',
+      'Clear-Site-Data': '*'
+    },
+    statusCode: 200,
+    body: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <style>\n  </style>\n  <title>JavaScript Render</title>\n</head>\n<body>\n\n    <script>\n        console.log(\'Connected JavaScript\')\n\n    </script>\n</body>\n</html>'
+  }
+
+  t.deepEquals(response, expected, 'Renders the correct information with the javascript.')
+
+  t.end()
+})

@@ -16,10 +16,12 @@ _.templateSettings.interpolate = /{{([\s\S]+?)}}/g
  * @param {string} view The html template name in the template folder.
  * @param {object} variables Variables that will be rendered into the html.
  * @param {object} headers Custom html headers you want to add.
+ * @param {boolean} hasStylesheet A flag to tell function there is stylesheet to look for.
+ * @param {boolean} hasJavascript A flag to tell function there is a javascript file to look for.
  * @returns {object} Http return information with
  * template rendered for display.
  */
-module.exports = async (view, variables = {}, headers = {}, hasStylesheet = false) => {
+module.exports = async (view, variables = {}, headers = {}, hasStylesheet = false, hasJavascript = false) => {
   const returnData = {
     headers: {
       'Content-Type': 'text/html',
@@ -56,6 +58,17 @@ module.exports = async (view, variables = {}, headers = {}, hasStylesheet = fals
       templateVariables.styles = ''
     }
   }
+  if (hasJavascript) {
+    try {
+      const file = await fs.readFileSync(path.resolve(
+        'scripts',
+        `${view}.js`
+      ), 'utf-8')
+      templateVariables.script = file
+    } catch (error) {
+      templateVariables.script = ''
+    }
+  }
 
   try {
     returnData.body = await _.template(
@@ -77,6 +90,5 @@ module.exports = async (view, variables = {}, headers = {}, hasStylesheet = fals
     )(templateVariables)
     return response.error(400)
   }
-
   return returnData
 }

@@ -1,15 +1,17 @@
 # Simple SLS SSR
 
-A simple helper package to turn Serverless Framework into a Server Side Rendering Application. Uses a very basic Templating Engine for building application pages.
+A simple helper package to turn Serverless Framework into a Server-Side Rendering Application. Uses a very basic Templating Engine for building application pages.
 
 ## Quickstart use within a Lambda
 
 ### Setup
 - Create a folder in your root named ``/templates``.
-- Create your html files to use as templates in the ``/templates`` folder.
+- Create your HTML files to use as templates in the ``/templates`` folder.
 - Create a folder in your root named ``/styles``.
-- Create your css files in the ``/styles`` folder.
-- Name your css files the same as your html files (file extension will be different of course)
+- Create your CSS files in the ``/styles`` folder.
+- Create a folder in your root named ``/scripts``.
+- Create your Javascript files in the ``/scripts`` folder.
+- Name your CSS and Javascript files the same as your HTML files (file extension will be different of course)
 
 ### Serving a page
 ```javascript
@@ -63,7 +65,7 @@ module.exports.myfunction = async (event, context) => {
 ```
 
 ### Setting Custom Style Sheet
-The render function will look for the css file in the `styles` folder that is named the same as the view.
+The render function will look for the CSS file in the `styles` folder that is named the same as the view.
 ```javascript
 module.exports.myfunction = async (event, context) => {
   const headers = {
@@ -71,6 +73,18 @@ module.exports.myfunction = async (event, context) => {
   }
 
   return await render('hello', null, headers, true)
+}
+```
+
+### Setting Custom Javascript File
+The render function will look for the Javascript file in the `scripts` folder that is named the same as the view.
+```javascript
+module.exports.myfunction = async (event, context) => {
+  const headers = {
+    'Content-Type': 'application/json'
+  }
+
+  return await render('hello', null, headers, false, true)
 }
 ```
 
@@ -84,7 +98,7 @@ module.exports.myfunction = async (event, context) => {
 }
 ```
 
-### Returning non templated, http responses
+### Returning non-templated, HTTP responses
 ```javascript
 const { response } = require('simple-sls-ssr')
 
